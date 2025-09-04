@@ -14,7 +14,7 @@ def get_column(file_name, query_column, query_value, result_column):
         header = next(file)
 
         lines = file.read().splitlines()              # "lines" is all the data. The whole file
-        print("The filetype of 'lines' is: ", type(lines))
+        #print("The filetype of 'lines' is: ", type(lines))
 
         # Now go through and make an array out of each row
         for line in range(len(lines)):
@@ -26,4 +26,3 @@ def get_column(file_name, query_column, query_value, result_column):
                 results.append(row[result_column])
     
     return results
-
