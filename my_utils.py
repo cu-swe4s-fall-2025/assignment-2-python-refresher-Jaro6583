@@ -1,4 +1,4 @@
-def get_column(file_name, query_column, query_value, result_column):
+def get_column(file_name, query_column, query_value, result_column = 1):
     '''
     file_name is just the name of the file to be looking through
     query_column is the column you want to check (this should be an integer) within each row. It should be a 0 if you want to search by area.
