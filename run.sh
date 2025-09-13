@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "First, let's look at fires in the USA:"
-python print_fires.py "United States of America"
+python print_fires.py "United States of America" -s "median"
 echo "Hey, that worked!"
 echo ""
 

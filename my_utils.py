@@ -42,5 +42,77 @@ def get_column(file_name, query_column, query_value, result_column=1):
 
     return results
 
+def mean_ints(array_of_ints=[]):
+    '''
+    This function is meant to read an array of integers and return the average (mean) of those integers.
+    If no array is given, the default will be an empty array (the first "if" check is to look for this case).
+    This function will also convert the integers into floats in order for the math to work.
+    Returns a float
+    '''
+    
+    if len(array_of_ints) == 0:
+        print("No array submitted. Mean cannot be calculated.")
+    else:
+        sum = 0.0
+        for i in range(len(array_of_ints)):
+            try:
+                sum += float(array_of_ints[i])
+            except ValueError:
+                print("Submitted array contains values that cannot be converted to integers.")
+        mean = sum/len(array_of_ints)
+
+        # For convenience, let's round to the nearest hundredth
+        mean = round(mean * 100)/100
+        
+        return mean
+    
+def median_ints(array_of_ints=[]):
+    '''
+    This function will read an array of integers and return the median value.
+    If there is an even number of entries in the array, the function will average the middle two values.
+    This function will also convert the integers into floats.
+    Returns a float
+    '''
+    if len(array_of_ints) == 0:
+        print("No array submitted. Median cannot be calculated.")
+        median = "MedianError"
+    else:
+        try:
+            # First, reorder the array to put it in order
+            array_of_ints.sort()
+            
+            if len(array_of_ints) % 2 == 1:             # This is an odd number of entries
+                median = float(array_of_ints[ int((len(array_of_ints) - 1) / 2) ])
+            else:                                       # This is an even number of entries
+                median = float((array_of_ints[ int(len(array_of_ints) / 2 - 1) ]) + float(array_of_ints[ int(len(array_of_ints) / 2) ])) / 2.0
+        except ValueError:
+            print("Submitted array contains values that cannot be used to find a median.")
+    
+    return median
+
+def standard_deviation_ints(array_of_ints=[]):
+    '''
+    This function will read an array of integers and return the standard deviation.
+    This function will also convert the integers into floats in order for the math to work.
+    Returns a float
+    '''
+
+    if len(array_of_ints) == 0:
+        print("No array submitted. Standard deviation cannot be calculated.")
+        standard_deviation = "SD_Error"
+    else:
+        standard_deviation = 0
+        mean = mean_ints(array_of_ints)
+        for i in range(len(array_of_ints)):
+            standard_deviation += (array_of_ints[i] - mean)**2
+        
+        standard_deviation /= len(array_of_ints)
+        standard_deviation = standard_deviation**(1/2)
+
+        # For convenience, let's round to the nearest hundredth's place
+        standard_deviation = round(standard_deviation * 100)/100
+    
+    return standard_deviation
+
 if __name__ == '__main__':
     print("This is 'main' code! (this shouldn't ever print in this assignment)")
