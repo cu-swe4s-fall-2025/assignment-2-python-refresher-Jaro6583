@@ -1,5 +1,5 @@
 import argparse
-from my_utils import get_column
+import my_utils
 
 if __name__ == '__main__':
 
@@ -22,17 +22,33 @@ if __name__ == '__main__':
     # This selects the name of the argument
     parser.add_argument("-fn", "--file-name", type=str, default="Agrofood_co2_emission.csv", help="This is the name of the file that will be looked through")
 
+    #5) Statistical function argument
+    # This allows the user to specify what statistics they would like to apply to the extracted dataset.
+    parser.add_argument("-s", "--statistic", type=str, default="no_statistic", help="Allows the user to specify what statstic should be performed on the extracted dataset. Type 'mean', 'median', or 'standarddeviation'.")
+
     # Parse the provided arguments
     args = parser.parse_args()
     country = args.area
     country_column = args.country_column
     fires_column = args.fires_column
     file_name = args.file_name
+    statistic = args.statistic
 
     # Print to make sure we're on track
     #print("So we've got country, country column, fires column, and file name:")
     #print(country, " ", country_column, " ", fires_column, " ", file_name)
 
-    # Finally, execute the actual function
-    fires = get_column(file_name, country_column, country, fires_column)
-    print(fires)
+    # Execute the extraction function
+    fires = my_utils.get_column(file_name, country_column, country, fires_column)
+
+    # Perform any requested statistic
+    if statistic == 'no_statistic':
+        print(fires)
+    elif statistic == "mean" or statistic == "Mean":
+        print(my_utils.mean_ints(fires))
+    elif statistic == "median" or statistic == "Median":
+        print(my_utils.median_ints(fires))
+    elif statistic == "standarddeviation" or statistic == "Standarddeviation" or statistic == "StandardDeviation":
+        print(my_utils.standard_deviation_ints(fires))
+    else:
+        print("An unknown statistic has been requested")
