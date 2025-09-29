@@ -2,7 +2,7 @@ import sys
 import unittest
 import random as rd
 
-sys.path.append('../src/')
+sys.path.append('../../src/')
 
 from my_utils import get_column, mean_ints, median_ints, standard_deviation_ints
 
