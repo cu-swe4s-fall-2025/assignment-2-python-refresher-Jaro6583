@@ -1,5 +1,6 @@
 import argparse
 import my_utils
+import sys
 
 if __name__ == '__main__':
 
@@ -52,3 +53,4 @@ if __name__ == '__main__':
         print(my_utils.standard_deviation_ints(fires))
     else:
         print("An unknown statistic has been requested")
+        sys.exit(1)
