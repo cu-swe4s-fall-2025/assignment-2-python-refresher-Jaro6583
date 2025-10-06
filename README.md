@@ -1,0 +1,1 @@
+Basically, this code is able to sift through a data-containing csv file and exctract certain information. It also contains the functions to find the mean, median, and standard deviation of that extracted dataset.
