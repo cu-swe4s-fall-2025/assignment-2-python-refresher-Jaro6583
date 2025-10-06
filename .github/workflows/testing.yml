@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-  pull_request:
+  pull_request: master
 
 jobs:
   run_unit_test:
