@@ -2,19 +2,34 @@ name: Tests
 
 on:
   push:
-  pull_request: master
+  pull_request:
+    branches: [ master ]
 
 jobs:
   run_unit_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: python test/unit/test_my_utils.py
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: env.yml
+          init-shell: bash
+      
+      - name: Run Unit Tests
+        shell: bash -l {0}
+        run: |
+          export: PYTHONPATH=src
+          python -m unittest discover .
+  
   run_func_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: bash test/func/my_utils_func_testing.sh
+  
   run_linter:
     runs-on: ubuntu-latest
     steps:
