@@ -21,7 +21,7 @@ jobs:
       - name: Run Unit Tests
         shell: bash -l {0}
         run: |
-          export: PYTHONPATH=src
+          export PYTHONPATH=src
           python -m unittest discover .
   
   run_func_test:
