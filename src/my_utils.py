@@ -16,7 +16,7 @@ def get_column(file_name, query_column, query_value, result_column=1):
         A list of the data of interest. The list will be empty if
         there are no query_value matches found.
     '''
-    
+
     # Build a new array that we will populate to return
     results = []
 
@@ -25,11 +25,10 @@ def get_column(file_name, query_column, query_value, result_column=1):
         with open(file_name, 'r') as file:
             header = next(file)
             lines = file.read().splitlines()
-            
+
             # Now go through and make an array out of each row
             for line in range(len(lines)):
                 row = lines[line].strip().split(',')
-                #print(column)
 
                 # Check to see if query_column matches query_value
                 if row[query_column] == query_value:
@@ -42,7 +41,7 @@ def get_column(file_name, query_column, query_value, result_column=1):
                         converted into ints
                         '''
                         pass
-    
+
     except FileNotFoundError:
         print(
             f"The get_column function cannot find the requested file: "
@@ -50,6 +49,7 @@ def get_column(file_name, query_column, query_value, result_column=1):
             )
 
     return results
+
 
 def mean_ints(array_of_ints=[]):
     '''
@@ -61,7 +61,7 @@ def mean_ints(array_of_ints=[]):
     math to work.
     Returns a float
     '''
-    
+
     if len(array_of_ints) == 0:
         print("No array submitted. Mean cannot be calculated.")
     else:
@@ -78,9 +78,10 @@ def mean_ints(array_of_ints=[]):
 
         # For convenience, let's round to the nearest hundredth
         mean = round(mean * 100)/100
-        
+
         return mean
-    
+
+
 def median_ints(array_of_ints=[]):
     '''
     This function will read an array of integers and return the median value.
@@ -96,21 +97,22 @@ def median_ints(array_of_ints=[]):
         try:
             # First, reorder the array to put it in order
             array_of_ints.sort()
-            
+
             if len(array_of_ints) % 2 == 1:
                 # This is an odd number of entries
-                median = float(array_of_ints[ int((len(array_of_ints) - 1) / 2) ])
+                median = float(array_of_ints[int((len(array_of_ints) - 1)/2)])
             else:
                 # This is an even number of entries
                 median = float(
-                    (array_of_ints[ int(len(array_of_ints) / 2 - 1) ])
-                    + float(array_of_ints[ int(len(array_of_ints) / 2) ]))
+                    (array_of_ints[int(len(array_of_ints) / 2 - 1)])
+                    + float(array_of_ints[int(len(array_of_ints) / 2)]))
                 median /= 2.0
         except ValueError:
             print("Submitted array contains values that cannot be used to "
                   + "find a median.")
-    
+
     return median
+
 
 def standard_deviation_ints(array_of_ints=[]):
     '''
@@ -129,14 +131,15 @@ def standard_deviation_ints(array_of_ints=[]):
         mean = mean_ints(array_of_ints)
         for i in range(len(array_of_ints)):
             standard_deviation += (array_of_ints[i] - mean)**2
-        
+
         standard_deviation /= len(array_of_ints)
         standard_deviation = standard_deviation**(1/2)
 
         # For convenience, let's round to the nearest hundredth's place
         standard_deviation = round(standard_deviation * 100)/100
-    
+
     return standard_deviation
+
 
 if __name__ == '__main__':
     import argparse
@@ -144,7 +147,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
         description=f"Directly calling this function and providing numbers "
-            + "will provide the requested statistic from those numbers.")
+                    + "will provide the requested statistic from those numbers.")
     parser.add_argument("function", type=str, default="mean", help=f"The "
                         + "function requested. Type 'mean', 'median', or "
                         + "'standarddeviation'.")
