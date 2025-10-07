@@ -11,7 +11,7 @@ class unit_testing(unittest.TestCase):
     def test_get_column(self):
         watermelon_val = get_column('testing_numbers.csv', 0, 'Watermelon', 1)
         bananas_val = get_column('testing_numbers.csv', 0, 'Bananas', 1)
-        self.assertGreater(watermelon_val, bananas_val)
+        self.assertGreater(watermelon_val[0], bananas_val[0])
     
     def test_mean_ints(self):
         bottom = rd.randint(1,9)
