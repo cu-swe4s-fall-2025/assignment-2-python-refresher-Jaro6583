@@ -115,4 +115,24 @@ def standard_deviation_ints(array_of_ints=[]):
     return standard_deviation
 
 if __name__ == '__main__':
-    print("This is 'main' code! (this shouldn't ever print in this assignment)")
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(description="Directly calling this function and providing numbers will provide the requested statistic from those numbers.")
+    parser.add_argument("function", type=str, default="mean", help="The function requested. Type 'mean', 'median', or 'standarddeviation'.")
+    parser.add_argument("numbers", type=float, nargs='+', help="A list of numbers for the requested function to be applied to.")
+
+    args = parser.parse_args()
+
+    if args.function == "mean":
+        mean = mean_ints(args.numbers)
+        print(f"Mean: {mean}")
+    elif args.function == "median":
+        median = median_ints(args.numbers)
+        print(f"Median: {median}")
+    elif args.function == "standarddeviation":
+        SD = standard_deviation_ints(args.numbers)
+        print(f"Standard deviation: {SD}")
+    else:
+        print("An unknown statistic has been requested")
+        sys.exit(1)

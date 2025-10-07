@@ -27,8 +27,11 @@ jobs:
   run_func_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: bash test/func/my_utils_func_testing.sh
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Run Functional Tests
+        run: bash test/func/my_utils_func_testing.sh
   
   run_linter:
     runs-on: ubuntu-latest
