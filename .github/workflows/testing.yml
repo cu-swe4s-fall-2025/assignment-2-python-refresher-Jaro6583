@@ -24,7 +24,7 @@ jobs:
           export PYTHONPATH=src
           python test/unit/test_my_utils.py
   
-  run_func_test:
+  run_func_tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -39,12 +39,12 @@ jobs:
       - name: Run Functional Tests
         shell: bash -l {0}
         working-directory: ./test/func
-        run: bash test/func/my_utils_func_testing.sh
+        run: bash my_utils_func_testing.sh
       
       - name: Run Print Fires Tests
         shell: bash -l {0}
         working-directory: ./test/func
-        run: bash test/func/test_print_fires.sh
+        run: bash test_print_fires.sh
   
   run_linter:
     runs-on: ubuntu-latest
