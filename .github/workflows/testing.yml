@@ -30,8 +30,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       
+      - name: Set up Environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: env.yml
+          init-shell: bash
+      
       - name: Run Functional Tests
+        shell: bash -l {0}
+        working-directory: ./test/func
         run: bash test/func/my_utils_func_testing.sh
+      
+      - name: Run Print Fires Tests
+        shell: bash -l {0}
+        working-directory: ./test/func
+        run: bash test/func/test_print_fires.sh
   
   run_linter:
     runs-on: ubuntu-latest
