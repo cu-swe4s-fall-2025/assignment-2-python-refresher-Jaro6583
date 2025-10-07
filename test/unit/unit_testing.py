@@ -1,6 +1,7 @@
 import sys
 import unittest
 import random as rd
+import os
 
 sys.path.append('../../src/')
 
@@ -9,8 +10,13 @@ from my_utils import get_column, mean_ints, median_ints, standard_deviation_ints
 class unit_testing(unittest.TestCase):
 
     def test_get_column(self):
-        watermelon_val = get_column('testing_numbers.csv', 0, 'Watermelon', 1)
-        bananas_val = get_column('testing_numbers.csv', 0, 'Bananas', 1)
+        # First, get the directory where this test script is located and tack on the name of the test data file
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(current_dir, 'testing_numbers.csv')
+        
+        # Now extract the actual values and compare
+        watermelon_val = get_column(file_path, 0, 'Watermelon', 1)
+        bananas_val = get_column(file_path, 0, 'Bananas', 1)
         self.assertGreater(watermelon_val, bananas_val)
     
     def test_mean_ints(self):
