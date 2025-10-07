@@ -3,7 +3,7 @@ import unittest
 import random as rd
 import os
 
-sys.path.append('../../src/') # noqa
+sys.path.append('../../src/')  # noqa
 
 from my_utils import get_column, mean_ints
 from my_utils import median_ints, standard_deviation_ints
@@ -12,7 +12,7 @@ from my_utils import median_ints, standard_deviation_ints
 class unit_testing(unittest.TestCase):
 
     def test_get_column(self):
-        # First, get the directory where this test script is located and then 
+        # First, get the directory where this test script is located and then
         # tack on the name of the test data file
         current_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(current_dir, 'testing_numbers.csv')

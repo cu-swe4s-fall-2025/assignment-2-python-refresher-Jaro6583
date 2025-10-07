@@ -4,7 +4,7 @@ import unittest
 
 sys.path.append("../../src/")
 
-import my_utils as tools # noqa
+import my_utils as tools  # noqa
 
 
 class my_testing(unittest.TestCase):

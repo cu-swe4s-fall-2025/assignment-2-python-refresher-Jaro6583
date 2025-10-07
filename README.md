@@ -7,3 +7,6 @@ The run.sh file calls the print_fires.py file three times. The first time, it ga
 
 Assignment 4 update:
 I've added mean, median, and standard deviation calculating functions into the my_utils.py file. I've also created a new file, test_my_utils.py, that tests each of these functions using arrays of random size and values. To the print_fires.py file, I added an additional optional argument where the user can specify a statistic (one of the three I just added) to apply to the dataset of interest. I created the test_print_fires.sh file to test this new argument. I also created a new csv file called co2_data_subset.csv which is literally just a subset of the whole data found in Agrofood_co2_emission.csv. The test_print_fires.sh file calls this new subset rather than the original.
+
+Assignment 5 update:
+I've added two YAML files. One (in the root) serves as the environment file for all my stuff. The other (in .github/workflows/testing.yml) is for the GitHub actions control. I have it so that on all pushes and for pull requests to the master branch it runs the tests. I have two unit test files (both .py) and two functional test files (both .sh). I also have a linter which was a pain to satisfy. Should all be good to go now.
