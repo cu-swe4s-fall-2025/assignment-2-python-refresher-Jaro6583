@@ -18,11 +18,17 @@ jobs:
           environment-file: env.yml
           init-shell: bash
       
-      - name: Run Unit Tests
+      - name: Run my_utils Tests
         shell: bash -l {0}
         run: |
           export PYTHONPATH=src
           python test/unit/test_my_utils.py
+      
+      - name: Run unit_testing Tests
+        shell: bash -l {0}
+        run: |
+          export PYTHONPATH=src
+          python test/unit/unit_testing.py
   
   run_func_tests:
     runs-on: ubuntu-latest
@@ -36,7 +42,7 @@ jobs:
           environment-file: env.yml
           init-shell: bash
       
-      - name: Run Functional Tests
+      - name: Run my_utils Tests
         shell: bash -l {0}
         working-directory: ./test/func
         run: bash my_utils_func_testing.sh
