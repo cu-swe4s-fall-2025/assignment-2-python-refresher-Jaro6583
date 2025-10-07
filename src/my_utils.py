@@ -147,7 +147,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
         description=f"Directly calling this function and providing numbers "
-                    + "will provide the requested statistic from those numbers.")
+                    + "will provide the requested statistic from those "
+                    + "numbers.")
     parser.add_argument("function", type=str, default="mean", help=f"The "
                         + "function requested. Type 'mean', 'median', or "
                         + "'standarddeviation'.")
